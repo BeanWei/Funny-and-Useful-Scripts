@@ -52,6 +52,7 @@ def login():
             num = genqq(tanbai_EncodeUin[i].replace('*S1*',''))
         else:
             num = genqq(tanbai_EncodeUin[i].replace('*S1*',''))
+        print(num)
         if len(num)==18:
             json=post(num)
             miwen=json['result']['ss_uin']
@@ -149,6 +150,7 @@ def post(uid):
                 'bkn':'344613249'}
     #datas = urllib.parse.urlencode(postData).encode(encoding='UTF-8')
     response = sess.post(PostUrl,headers=headers,data=postData,proxies =sess.proxies,timeout=10)
+    print(response)
     print(response.json())
     return response.json()
 
