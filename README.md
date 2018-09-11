@@ -14,7 +14,7 @@
 3. create-code  =>  python 生成验证码图片
 	- simplecode.py  =>  生成简易验证码
 	- diffcultcode.py	=> 	生成干扰验证码
-
+    - bigdiffcultcode.py    =>  增加干扰项
 
 
 ## LICENSE
