@@ -16,6 +16,9 @@
 	- diffcultcode.py	=> 	生成干扰验证码
     - bigdiffcultcode.py    =>  增加干扰项
 
+4. full-screenshot-for-windows  =>  在windows环境下截取全屏
+
+
 
 ## LICENSE
 
