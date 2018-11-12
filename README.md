@@ -18,6 +18,21 @@
 
 4. full-screenshot-for-windows  =>  在windows环境下截取全屏
 
+5. parse-SSR =>  Go解析 SSR链接(ssr://xxxx)
+```
+输出：
+server: 103.114.163.38
+port: 5613
+协议: origin
+加密方法: aes-256-cfb
+密码: www.wuwweb.com
+混淆: plain
+混淆参数:
+协议参数:
+备注: @IRANSSR - 17Aug - 103.114.163.38
+分组: @IRANSSR
+```
+
 
 
 ## LICENSE
