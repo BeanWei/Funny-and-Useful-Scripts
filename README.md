@@ -32,7 +32,7 @@ port: 5613
 备注: @IRANSSR - 17Aug - 103.114.163.38
 分组: @IRANSSR
 ```
-
+6. colors-select => 颜色表
 
 
 ## LICENSE
