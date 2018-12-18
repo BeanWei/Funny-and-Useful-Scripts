@@ -34,6 +34,7 @@ port: 5613
 ```
 6. colors-select => 颜色表
 
+7. BiliMerge => 哔哩哔哩缓存视频合并导出
 
 ## LICENSE
 
