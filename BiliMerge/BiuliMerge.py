@@ -6,6 +6,7 @@ import json
 import time
 import threading
 
+needThread = False
 
 title = None
 targetDir = None
@@ -15,8 +16,11 @@ def main():
     output_path = raw_input("Please input the Output Path: ")
     items = os.listdir(target_path)
     for i in items:
-        t = threading.Thread(target=handleSingle, args=(os.path.join(target_path, i), target_path, output_path))
-        t.start()
+        if needThread:
+            t = threading.Thread(target=handleSingle, args=(os.path.join(target_path, i), target_path, output_path))
+            t.start()
+        else:
+            handleSingle(os.path.join(target_path, i), target_path, output_path)
 
 def handleSingle(path, basepath, outputpath):
     global title
