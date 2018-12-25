@@ -30,7 +30,8 @@ def handleSingle(path, basepath, outputpath):
         if not title:
             title = jsonEntry.get("title", "{}".format(time.time() * 1000))
             targetDir = os.path.join(outputpath, title)
-            os.makedirs(targetDir.encode("gbk"))
+            if not os.path.exists(targetDir.encode("gbk")):
+                os.makedirs(targetDir.encode("gbk"))
         partname = jsonEntry["page_data"]["part"]
     getBlv(path, partname)
 
@@ -42,19 +43,23 @@ def getBlv(path, partname):
             for b in os.listdir(os.path.join(path, i)):
                 if b.endswith(".blv"):
                     newb = b.replace(".blv", ".mp4")
-                    os.rename(os.path.join(path, i, b), os.path.join(path, i, newb))
+                    if not os.path.exists(os.path.join(path, i, newb)):
+                        os.rename(os.path.join(path, i, b), os.path.join(path, i, newb))
                     mp4list.append(newb)
+                elif b.endswith(".mp4"):
+                    mp4list.append(b)
             filedtr = ""
             mp4list.sort()
             for m in mp4list:
                 filedtr += "file " + m + "\n" 
-            with open(os.path.join(blvpath, "filelist.txt"), "w") as f:                
+            print(filedtr)
+            with open(os.path.join(blvpath, "filelist.txt"), "w+") as f:                
                 f.write(filedtr)
             partname = partname.replace(" ", "") + ".mp4"
             mergeBlv(blvpath, targetDir, partname)                   
 
 def mergeBlv(shelldir, outputDir, partname):
-    merge_cmd = "ffmpeg -f concat -i filelist.txt -c copy {}".format(partname.encode("gbk"))
+    merge_cmd = 'ffmpeg -f concat -i filelist.txt -c copy "{}"'.format(partname.encode("gbk"))
     execDir = os.path.join(shelldir, "run.bat")
     with open(execDir, "w") as fp:
         fp.write(merge_cmd)
